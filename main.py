@@ -19,7 +19,7 @@ Cutoffs = ['0_4', '0_5', '0_6']
 for C in Cutoffs:
     for T in Temperatures:
         for P in Pressures:
-            print("D:/PhD/TCPDecompositionExperiments/Completed/CutoffStudy/{}/{}/{}/".format(C,T, P))
+            print("D:/PhD/TCPDecompositionExperiments/Completed/CutoffStudy/{}/{}/{}/".format(C, T, P))
             # sys.path.append("/home/carlos/anaconda3/lib/python3.7/site-packages")
             sys.path.append(
                 "D:/PhD/TCPDecompositionExperiments/Completed/CutoffStudy/{}/{}/{}/processed/".format(C, T, P))
@@ -307,7 +307,7 @@ for C in Cutoffs:
                 return list_reactants, list_surfs, bonds, full_G
 
 
-            def mgrouper_bdump_nx(bdump, border_cutoff=float(C.replace('_', '.')), mol_limit=200):
+            def mgrouper_bdump_nx(bdump, border_cutoff=0.3, mol_limit=200):
                 """
 
                 Parameters
@@ -395,7 +395,7 @@ for C in Cutoffs:
 
             class Networkgen:
 
-                def __init__(self, datafile, starting_bfile, border_cutoff=float(C.replace('_', '.')), mol_limit=200):
+                def __init__(self, datafile, starting_bfile, border_cutoff=0.3, mol_limit=200):
                     """
 
                     Parameters
@@ -612,7 +612,7 @@ for C in Cutoffs:
 
                     return G0
 
-                def get_networks(self, bonds_filenames, border_cutoff=float(C.replace('_', '.')), mol_limit=200):
+                def get_networks(self, bonds_filenames, border_cutoff=0.3, mol_limit=200):
                     """
                     Parameters
                     ----------
@@ -1146,7 +1146,6 @@ for C in Cutoffs:
                 system = 'Fe2O3-200-iso-octane'
                 borders = [float(C.replace('_', '.'))]  # ,0.4,0.5,0.2]
                 print(borders)
-                print(type(borders))
                 for border in borders:
                     for ind, direct in enumerate(directories):
                         os.chdir(dir)
